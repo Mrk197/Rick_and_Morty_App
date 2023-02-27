@@ -1,0 +1,25 @@
+.divDetail{
+    color: white;
+    display: inline-block;
+    background-color: rgba(0, 90, 128, 0.95);
+    width: 50%;
+    margin-top: 2%;
+    border-radius: 5px;
+}
+
+.divDetail img{
+    border-radius: 5px;
+}
+
+.divDetail button{
+    background-color: rgb(20, 75, 20);
+    color: whitesmoke;
+    border-radius: 5px;
+    border: none;
+    height: 35px;
+    margin: 1%;
+}
+
+.divDetail button:hover{
+    background-color: rgb(84, 120, 31);
+}

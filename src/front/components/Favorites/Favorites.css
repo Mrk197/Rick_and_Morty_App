@@ -1,0 +1,10 @@
+.divFavorites{
+    display: flex;
+    flex-direction: column;
+}
+
+.divCard{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1%;
+}

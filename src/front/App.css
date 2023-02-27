@@ -1,0 +1,14 @@
+.App {
+   text-align: center;
+   background-image: url("./assets/background5.jpg");
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center;
+   height: 96vh;
+   width: 100wh;
+}
+
+.Tittle{
+   color: white; 
+   margin: 30px;
+}
