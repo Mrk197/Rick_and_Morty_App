@@ -42,7 +42,7 @@ function App () {
     const repeat = (element) =>  element.id === parseInt(character);
 
     if(!characters.some(repeat)) { //si no se repite
-      fetch(`https://rickandmortyapi.com/api/character/${character}`)
+      fetch(`http://localhost:3001/rickandmorty/character/${character}`)
         .then((response) => response.json())
         .then((data) => {
           if (data.name) {
