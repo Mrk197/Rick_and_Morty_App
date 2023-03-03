@@ -1,7 +1,7 @@
-const axios =require('axios');
+const axios = require('axios');
 
-const getCharById = (res, ID) => {
-    axios(`https://rickandmortyapi.com/api/character/${ID}`)
+const getCharDetail = (res, id) =>{
+    axios(`https://rickandmortyapi.com/api/character/${id}`)
     .then(response => response.data)
     .then(data => {
         const character = {
@@ -9,6 +9,8 @@ const getCharById = (res, ID) => {
             image: data.image,
             name: data.name, 
             gender: data.gender,
+            status: data.status,
+            origin: data.origin,
             species: data.species
         }
         res.writeHead(200, {"Content-Type": "application/json"})
@@ -18,9 +20,8 @@ const getCharById = (res, ID) => {
         res.writeHead(500, {"Content-Type": "text/plain"})
         res.end(error.message)
     })
-};
-
-module.exports = {
-    getCharById
 }
 
+module.exports = {
+    getCharDetail
+}
