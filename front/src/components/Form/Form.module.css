@@ -12,8 +12,8 @@
 .form{
     display: flex;
     width: 40%; 
-    height: 30%;  
-    color: rgb(74, 122, 2);
+    height: 25%;  
+    color: rgb(54, 89, 2);
     flex-direction: column;
     justify-content: center;
     justify-content: space-evenly;
@@ -21,14 +21,15 @@
 }
 
 .form input{
-    background-color: rgba(95, 3, 255, 0.3);
+    background-color: transparent;
     border-radius: 5px;
-    border: none;
+    border-color: rgba(95, 3, 255, 0.4);
 }
 
 .button{
-    color: rgb(61, 99, 4);
-    height: 30px;
+    color: rgb(43, 69, 3);
+    background-color: rgba(84, 5, 219, 0.512);
+    height: 35px;
     padding: 1%;
 }
 
@@ -38,4 +39,10 @@
 
 .warning{
     color: brown;
+}
+
+.toggle{
+    background-color: transparent;
+    border-radius: 5px;
+    border: none;
 }

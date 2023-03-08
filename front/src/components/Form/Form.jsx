@@ -5,11 +5,11 @@ import { validation } from './validation';
 export default function Form({login}) {
     const [userData, setUserData] = useState({ username: '', password: '' });
     const [errors, setErrors] = useState({ username: '', password: '' }); 
-    /* const togglePasswordButton = document.getElementById('toggle');
+    const togglePasswordButton = document.getElementById('toggle');
     const passwordInput = document.getElementById('password');
- */
+
     const handleInputChange = (e) =>{
-        e.preventDefault();
+        //e.preventDefault();
         setUserData({...userData, [e.target.name]:e.target.value});
         setErrors(validation(userData));
     };
@@ -19,20 +19,20 @@ export default function Form({login}) {
         login(userData);
     };
 
-    /* const togglePassword = () => {
+    const togglePassword = () => {
         console.log('type', passwordInput.type);
         if(passwordInput.type === 'password'){
             passwordInput.type = 'text';
-            togglePasswordButton.textContent = 'Hide Password';
+            togglePasswordButton.textContent = 'Hide';
             togglePasswordButton.setAtribute('arial-label','Hide Password.');
         }
 
         else{
             passwordInput.type = 'password';
-            togglePasswordButton.textContent = 'Show Password';
+            togglePasswordButton.textContent = 'Show';
             togglePasswordButton.setAtribute('arial-label','Show Password as plain text.');
         }
-    } */
+    }
 
     return <div className={styles.login}>
         <h1>RICK AND MORTY APP</h1>
@@ -44,13 +44,15 @@ export default function Form({login}) {
                 name="username"
                 value={userData.username}
                 onChange={handleInputChange}
+                onInput={handleInputChange}
+                autoComplete="username"
                 />
                 {errors.username && <p className={styles.warning}>{errors.username}</p>}
             </div>
             <div>
                 <label htmlFor="password">Password: </label>
                 <input type="password" name="password" id="password" value={userData.password} onChange={handleInputChange} />
-                {/* <button id="toggle" onClick={togglePassword}>Show</button> */}
+                {<button id="toggle" onClick={togglePassword} className={styles.toggle}>Show</button>}
                 {errors.password && <p className={styles.warning}>{errors.password}</p>}
             </div>
             <div>

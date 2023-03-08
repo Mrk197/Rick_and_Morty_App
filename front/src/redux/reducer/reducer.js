@@ -8,7 +8,6 @@
 function rootReducer(state=initialState, {type, payload}){
     switch (type) {
         case ADD_FAVORITE:
-            //state.myFavorites.push(actio.payload)
             return { 
                 ...state,
                 myFavorites: [...state.allCharacters, payload],

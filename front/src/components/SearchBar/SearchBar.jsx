@@ -16,7 +16,7 @@ export default function SearchBar({onSearch}) {
    };
    return (
       <div className={styled.divSearch}>
-         <input id="search" type='search' onChange={handleInputChange} value={character} placeholder="Inserta un número"/>
+         <input id="search" type='search' onChange={handleInputChange} value={character} placeholder="Ingresa un número"/>
          <button onClick={()=>onSearch(character)}>Agregar</button>
       </div>
    );
