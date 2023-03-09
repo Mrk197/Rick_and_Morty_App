@@ -1,10 +1,17 @@
-const http = require('http');
+//const http = require('http');
 //const characters = require('./utils/data');
 const {getCharById} = require('./controllers/getCharById');
 const {getCharDetail} = require('./controllers/getCharDetail');
+
+const express = require('express');
+const server = express();
 const PORT = 3001;
 
-http.createServer((req,res) =>{
+server.listen(PORT, () => {
+   console.log('Server raised in port ' + PORT);
+});
+
+/* http.createServer((req,res) =>{
     console.log(`Server raised in port ${PORT}`);
     res.setHeader('Access-Control-Allow-Origin', '*'); //darle permiso al cliente hacer petición a la API
     let id =req.url.split("/").at(-1);
@@ -15,7 +22,7 @@ http.createServer((req,res) =>{
     else if(req.url.includes("detail")){
         getCharDetail(res, id);
     }
-}).listen(3001, 'localhost')
+}).listen(3001, 'localhost') */
 
 
 /* http.createServer((req, res) => {
