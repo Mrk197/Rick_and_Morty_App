@@ -11,21 +11,22 @@ function rootReducer(state=initialState, {type, payload}){
             return { 
                 ...state,
                 myFavorites: [...state.allCharacters, payload],
-                allCharacters: [...state.allCharacters, payload]
-            }
+                allCharacters: [...state.allCharacters, payload],
+            };
 
         case DELETE_FAVORITE:
-            const actualFavorites = state.myFavorites.filter((item) => item.id !== payload);
+            const actualFavorites = state.allCharacters.filter((item) => item.id !== payload);
             return {
                 ...state,
-                myFavorites: [...state.myFavorites, actualFavorites]
-            }
+                myFavorites: [...actualFavorites],
+                allCharacters: [...actualFavorites],
+            };
         case FILTER:
             const filter = state.allCharacters.filter( fav=> fav.gender === payload);
             return{
                 ...state,
                 myFavorites: payload === "all" ? state.allCharacters : filter
-            }
+            };
         case ORDER:
             const order= state.allCharacters.sort((a,b) => a.detailId - b.detailId );
 

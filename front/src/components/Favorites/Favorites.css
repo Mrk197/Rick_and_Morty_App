@@ -8,3 +8,34 @@
     justify-content: space-around;
     margin-top: 1%;
 }
+
+.card{
+    background-color: azure;
+    border-radius: 5px;   
+    width: 18vw;
+    margin-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+}
+.card a{
+    text-decoration: none;
+}
+
+.divImg{
+    display: flex;
+    flex-direction: column;
+    border-radius: 3px;
+}
+
+.divImg h2{
+    background-color: rgba(7, 7, 7, 0.714);
+    color: white;
+    margin-top: -15%;
+    padding-bottom: 0;
+    width: 10vw;
+}
+
+.divDescription{
+    display: flex;
+    justify-content: space-around;
+}

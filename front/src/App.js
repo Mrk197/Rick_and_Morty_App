@@ -79,7 +79,7 @@ function App () {
         <Route path="/" element={<Home characters={characters} close={onClose}/>} />
         <Route path="/about" element={<About/>} />
         <Route path="/detail/:detailId" element={<Detail/>} />
-        <Route path="/favorites" element={<Favorites close={onClose}/>} />
+        <Route path="/favorites" element={<Favorites/>} />
         <Route path="*" element={<Error />} />
       </Routes>
     </div>
