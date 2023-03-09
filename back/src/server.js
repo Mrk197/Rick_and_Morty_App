@@ -2,10 +2,31 @@
 //const characters = require('./utils/data');
 const {getCharById} = require('./controllers/getCharById');
 const {getCharDetail} = require('./controllers/getCharDetail');
+const router =require('./routes/index.js');
+const favs = require('./utils/favs.js')
 
 const express = require('express');
 const server = express();
 const PORT = 3001;
+
+server.use(express.json());
+server.use("/", router);
+
+server.post("/rickandmorty/fav", (req, res) =>{
+    favs.push(req.body);
+    res.status(200).send("Elemento agregado")
+})
+
+server.get("/rickandmorty/fav", (req, res) =>{
+    res.send(JSON.stringify(favs));
+})
+
+server.delete("/rickandmorty/fav/:id", (req, res) => {
+    const {id}= req.params
+    const newFavs = favs.filter(fav => fav.id !== id );
+    favs = newFavs;
+    res.send(JSON.stringify(newFavs))
+})
 
 server.listen(PORT, () => {
    console.log('Server raised in port ' + PORT);
