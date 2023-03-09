@@ -4,9 +4,9 @@ import {useState, useEffect} from 'react';
 import { connect } from "react-redux";
 import { addFavorite, deleteFavorite } from '../../redux/actions/actions';
 
-function Card(props) {
+export function Card(props) {
    const [isfav, setIsFav] = useState(false);
-
+   console.log("prop",props);
 
    function handleFavorite() {
       if (isfav) {
@@ -17,13 +17,21 @@ function Card(props) {
       else{
          setIsFav(true);
          console.log('isFAV', isfav);
-         props.addFavorite(props);
+         props.addFavorite({
+            detailId: props.detailId,
+            name: props.name,
+            gender: props.gender,
+            image: props.image,
+            species: props.species
+         });
       }
    }
 
+
    useEffect(() => {
       console.log("favorites", props.myFavorites);
-      props.myFavorites.forEach((fav) => {
+      props.myFavorites.length && props.myFavorites.forEach((fav) => {
+         console.log("fav", fav);
          if (fav.detailId === props.detailId) {
             setIsFav(true);
          }

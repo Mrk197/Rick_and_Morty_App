@@ -22,7 +22,7 @@ export function Favorites({myFavorites}) {
         </div>
         <div className='divCard'>
             {
-                myFavorites.map((favorite) =>{
+                myFavorites.length && myFavorites.map((favorite) =>{
                     return (
                         <div className='card'>
                             <Link to={`/detail/${favorite.detailId}`}>

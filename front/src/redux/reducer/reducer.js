@@ -10,23 +10,25 @@ function rootReducer(state=initialState, {type, payload}){
         case ADD_FAVORITE:
             return { 
                 ...state,
-                myFavorites: [...state.allCharacters, payload],
-                allCharacters: [...state.allCharacters, payload],
-            };
+                myFavorites: [...state.myFavorites, payload],
+                //allCharacters: [...state.allCharacters, payload],
+            }
 
         case DELETE_FAVORITE:
-            const actualFavorites = state.allCharacters.filter((item) => item.id !== payload);
+            const actualFavorites = state.myFavorites.filter( item => item.id !== payload);
             return {
                 ...state,
-                myFavorites: [...actualFavorites],
-                allCharacters: [...actualFavorites],
-            };
+                myFavorites: actualFavorites,
+                //allCharacters: [...actualFavorites],
+            }
+
         case FILTER:
             const filter = state.allCharacters.filter( fav=> fav.gender === payload);
             return{
                 ...state,
                 myFavorites: payload === "all" ? state.allCharacters : filter
-            };
+            }
+
         case ORDER:
             const order= state.allCharacters.sort((a,b) => a.detailId - b.detailId );
 
@@ -42,7 +44,6 @@ function rootReducer(state=initialState, {type, payload}){
                     myFavorites: order.reverse()
                 }
             }
-            break;
     
         default:
             return state;
