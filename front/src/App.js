@@ -8,6 +8,7 @@ import Form from './components/Form/Form'
 import Favorites from './components/Favorites/Favorites'
 import React, {useState, useEffect} from 'react'
 import {Routes, Route, useLocation, useNavigate} from 'react-router-dom'
+import axios from 'axios'
 
 function App () {
   const [characters, setCharacters] = useState([]);
@@ -42,8 +43,8 @@ function App () {
     const repeat = (element) =>  element.id === parseInt(character);
 
     if(!characters.some(repeat)) { //si no se repite
-      fetch(`http://localhost:3001/rickandmorty/onsearch/${character}`)
-        .then((response) => response.json())
+      axios(`http://localhost:3001/rickandmorty/onsearch/${character}`)
+        .then((response) => response.data)
         .then((data) => {
           if (data.name) {
               setCharacters((oldChars) => [...oldChars, data]); 

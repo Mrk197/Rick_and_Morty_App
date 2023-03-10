@@ -11,7 +11,7 @@ function rootReducer(state=initialState, {type, payload}){
             return { 
                 ...state,
                 myFavorites: [...state.myFavorites, payload],
-                //allCharacters: [...state.allCharacters, payload],
+                allCharacters: state.allCharacters,
             }
 
         case DELETE_FAVORITE:
@@ -19,7 +19,7 @@ function rootReducer(state=initialState, {type, payload}){
             return {
                 ...state,
                 myFavorites: actualFavorites,
-                //allCharacters: [...actualFavorites],
+                allCharacters: state.allCharacters,
             }
 
         case FILTER:
