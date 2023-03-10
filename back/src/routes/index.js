@@ -1,7 +1,6 @@
+const { getCharById } = require('../controllers/getCharById');
+const { getCharDetail } = require('../controllers/getCharDetail');
 const {Router} = require('express');
-import { getCharById } from '../controllers/getCharById';
-import { getCharDetail } from '../controllers/getCharDetail';
-
 const router = Router();
 
 router.get("/onsearch/:id", getCharById);

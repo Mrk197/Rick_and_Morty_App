@@ -1,20 +1,36 @@
 //const http = require('http');
 //const characters = require('./utils/data');
-const {getCharById} = require('./controllers/getCharById');
-const {getCharDetail} = require('./controllers/getCharDetail');
-const router =require('./routes/index.js');
-const favs = require('./utils/favs.js')
-
 const express = require('express');
 const server = express();
+const {getCharById} = require('./controllers/getCharById');
+const {getCharDetail} = require('./controllers/getCharDetail');
+const router =require('./routes');  //no es necesario incluir index.js ya que se considera default 
+let favs = require('./utils/favs.js');
+const morgan = require('morgan');
+const cors = require('cors');
+
+
 const PORT = 3001;
 
+server.use(cors());
+server.use(morgan('dev'));
 server.use(express.json());
-server.use("/", router);
+server.use("/rickandmorty", router);
 
 server.post("/rickandmorty/fav", (req, res) =>{
-    favs.push(req.body);
-    res.status(200).send("Elemento agregado")
+    const {id, name, species, image, gender} = req.body;
+    if (!id || !name ||  !species || !image || !gender) {
+        return res.status(404).send('Faltan datos');
+    }
+    const character = {
+        id,
+        name,
+        species,
+        image,
+        gender
+    }
+    favs.push(character);
+    res.status(200).json(character);
 })
 
 server.get("/rickandmorty/fav", (req, res) =>{
@@ -23,9 +39,10 @@ server.get("/rickandmorty/fav", (req, res) =>{
 
 server.delete("/rickandmorty/fav/:id", (req, res) => {
     const {id}= req.params
-    const newFavs = favs.filter(fav => fav.id !== id );
+    const newFavs = favs.filter(fav => fav.id !== Number(id) );
     favs = newFavs;
-    res.send(JSON.stringify(newFavs))
+    //res.send(JSON.stringify(newFavs))
+    res.send("Se elimino correctamente");
 })
 
 server.listen(PORT, () => {

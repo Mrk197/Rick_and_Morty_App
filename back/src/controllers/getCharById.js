@@ -1,23 +1,27 @@
 const axios =require('axios');
 
-const URL =  "https://rickandmortyapi.com/api/character/";
+const URL =  "https://rickandmortyapi.com/api/character";
 
 function getCharById(req, res) {
     const params = req.params;
 
-    axios(`${URL}${params.id}`)
-    .then( response =>{
+    axios(`${URL}/${params.id}`)
+    .then(response => response.data)
+    .then( data =>{
         const character = {
-            id: response.id, 
-            name: response.name, 
-            species: response.name,
-            image: response.image,
-            gender: response.gender
+            id: data.id, 
+            name: data.name, 
+            species: data.name,
+            image: data.image,
+            gender: data.gender
         }
-        res.status(200).send(JSON.stringify(character))
+        //res.status(200).send(JSON.stringify(character))
+        res.status(200).json(character);
     })
-    .catch(
-        res.status(500).send(JSON.stringify({message: "error"}))
+    .catch( (error) =>{
+        //res.status(500).send(JSON.stringify({error: error.message}))
+        res.status(500).json({error: error.message})
+    }
     )
 }
 
