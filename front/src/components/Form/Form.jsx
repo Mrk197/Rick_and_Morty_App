@@ -52,9 +52,12 @@ export default function Form({login}) {
             <div>
                 <label htmlFor="password">Password: </label>
                 <input type="password" name="password" id="password" value={userData.password} onChange={handleInputChange} />
-                {<button id="toggle" onClick={togglePassword} className={styles.toggle}>Show</button>}
+                <div className={styles.toggle}>
+                    {<button id="toggle" onClick={togglePassword}>Show</button>}
+                </div>
                 {errors.password && <p className={styles.warning}>{errors.password}</p>}
             </div>
+            
             <div>
                 <input type="submit" value="LOGIN" className={styles.button} />
             </div>
