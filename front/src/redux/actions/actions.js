@@ -2,19 +2,32 @@ import {ADD_FAVORITE, DELETE_FAVORITE, FILTER, ORDER} from '../actions/actions-t
 import axios from 'axios';
 
 export function addFavorite(character) {
-    axios.post("http://localhost:3001/rickandmorty/fav", character)
-    return {
-        type: ADD_FAVORITE, 
-        payload: character
+    try {
+        return async function(dispatch) {
+            await axios.post("http://localhost:3001/rickandmorty/fav", character)
+            return dispatch({
+                type: ADD_FAVORITE, 
+                payload: character
+            })
+        }
+    } catch (error) {
+        console.log(error.message);
     }
 }
 
 export const deleteFavorite = (id)=> {
-    axios.delete(`http://localhost:3001/rickandmorty/fav/${id}`)
-    return {
-        type: DELETE_FAVORITE,
-        payload: id
+    try {
+        return async function(dispatch) {
+            await axios.delete(`http://localhost:3001/rickandmorty/fav/${id}`)
+            return dispatch({
+                type: DELETE_FAVORITE,
+                payload: id
+            })
+        }
+    } catch (error) {
+        console.log(error.message);
     }
+    
 }
 
 export function filterCards(gender) {

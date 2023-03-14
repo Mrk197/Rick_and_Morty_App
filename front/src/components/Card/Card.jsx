@@ -6,10 +6,11 @@ import { addFavorite, deleteFavorite } from '../../redux/actions/actions';
 
 export function Card(props) {
    const [isfav, setIsFav] = useState(false);
-   console.log("prop",props);
+   //console.log("prop",props);
 
    function handleFavorite() {
-      if (isfav) {
+      console.log("FAV al inicio", isfav);
+      if (isfav === "true") {
          setIsFav(false);
          console.log('isFAV', isfav);
          props.deleteFavorite(props.detailId);
@@ -31,7 +32,6 @@ export function Card(props) {
    useEffect(() => {
       console.log("favorites", props.myFavorites);
       props.myFavorites.length && props.myFavorites.forEach((fav) => {
-         console.log("fav", fav);
          if (fav.detailId === props.detailId) {
             setIsFav(true);
          }
