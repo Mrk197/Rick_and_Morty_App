@@ -24,7 +24,7 @@ export function Favorites({myFavorites}) {
             {
                 myFavorites.length && myFavorites.map((favorite) =>{
                     return (
-                        <div className='card'>
+                        <div className='card' key={favorite.detailId}>
                             <Link to={`/detail/${favorite.detailId}`}>
                             <div className='divImg'>          
                                 <img  src={favorite.image} alt="img" />

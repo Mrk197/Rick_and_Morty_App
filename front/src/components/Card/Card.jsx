@@ -10,14 +10,14 @@ export function Card(props) {
 
    function handleFavorite() {
       console.log("FAV al inicio", isfav);
-      if (isfav === "true") {
-         setIsFav(false);
-         console.log('isFAV', isfav);
+      if (isfav) {
+         console.log("true");
+         setIsFav(!isfav);
          props.deleteFavorite(props.detailId);
       }
       else{
-         setIsFav(true);
-         console.log('isFAV', isfav);
+         console.log("false");
+         setIsFav(!isfav);
          props.addFavorite({
             detailId: props.detailId,
             name: props.name,
@@ -30,7 +30,6 @@ export function Card(props) {
 
 
    useEffect(() => {
-      console.log("favorites", props.myFavorites);
       props.myFavorites.length && props.myFavorites.forEach((fav) => {
          if (fav.detailId === props.detailId) {
             setIsFav(true);
