@@ -18,12 +18,12 @@ server.use(express.json());
 server.use("/rickandmorty", router);
 
 server.post("/rickandmorty/fav", (req, res) =>{
-    const {id, name, species, image, gender} = req.body;
-    if (!id || !name ||  !species || !image || !gender) {
+    const {detailId, name, species, image, gender} = req.body;
+    if (!detailId || !name ||  !species || !image || !gender) {
         return res.status(404).send('Faltan datos');
     }
     const character = {
-        id,
+        detailId,
         name,
         species,
         image,
