@@ -42,7 +42,7 @@ server.delete("/rickandmorty/fav/:id", (req, res) => {
     const newFavs = favs.filter(fav => fav.id !== Number(id) );
     favs = newFavs;
     //res.send(JSON.stringify(newFavs))
-    res.send("Se elimino correctamente");
+    res.status(200).send("Se elimino correctamente");
 })
 
 server.listen(PORT, () => {
