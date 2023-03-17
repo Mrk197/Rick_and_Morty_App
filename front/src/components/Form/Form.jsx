@@ -9,7 +9,7 @@ export default function Form({login}) {
     const passwordInput = document.getElementById('password');
 
     const handleInputChange = (e) =>{
-        //e.preventDefault();
+        e.preventDefault();
         setUserData({...userData, [e.target.name]:e.target.value});
         setErrors(validation(userData));
     };
@@ -44,7 +44,7 @@ export default function Form({login}) {
                 name="username"
                 value={userData.username}
                 onChange={handleInputChange}
-                onInput={handleInputChange}
+                onBlur={handleInputChange}
                 autoComplete="username"
                 />
                 {errors.username && <p className={styles.warning}>{errors.username}</p>}

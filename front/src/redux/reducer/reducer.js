@@ -44,7 +44,7 @@ function rootReducer(state=initialState, {type, payload}){
                     myFavorites: order.reverse()
                 }
             }
-    
+            break
         default:
             return state;
     }
