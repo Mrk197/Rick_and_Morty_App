@@ -10,8 +10,8 @@ export default function Form({login}) {
 
     const handleInputChange = (e) =>{
         e.preventDefault();
-        setUserData({...userData, [e.target.name]:e.target.value});
-        setErrors(validation(userData));
+        setUserData({...userData, [e.target.name]:e.target.value}, setErrors(validation(userData)));
+        
     };
 
     const handleSubmit = (e) => {
@@ -51,7 +51,15 @@ export default function Form({login}) {
             </div>
             <div>
                 <label htmlFor="password">Password: </label>
-                <input type="password" name="password" id="password" value={userData.password} onChange={handleInputChange} />
+                <input 
+                type="password" 
+                name="password" 
+                id="password" 
+                value={userData.password} 
+                onChange={handleInputChange}
+                onBlur={handleInputChange}
+                autoComplete="password"
+                />
                 <div className={styles.toggle}>
                     {<button id="toggle" onClick={togglePassword}>Show</button>}
                 </div>
