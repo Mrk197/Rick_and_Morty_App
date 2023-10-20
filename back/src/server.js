@@ -8,6 +8,7 @@ const router =require('./routes');  //no es necesario incluir index.js ya que se
 let favs = require('./utils/favs.js');
 const morgan = require('morgan');
 const cors = require('cors');
+const { conn } = require('./DB_connection');
 
 
 const PORT = 3001;
@@ -45,9 +46,13 @@ server.delete("/rickandmorty/fav/:id", (req, res) => {
     res.status(200).send("Se elimino correctamente");
 })
 
-server.listen(PORT, () => {
-   console.log('Server raised in port ' + PORT);
-});
+conn.sync({force:true}).then(()=>{
+    server.listen(PORT, () => {
+       console.log('Server raised in port ' + PORT);
+    });
+})
+.catch(err => console.log(err.message));
+
 
 /* http.createServer((req,res) =>{
     console.log(`Server raised in port ${PORT}`);
