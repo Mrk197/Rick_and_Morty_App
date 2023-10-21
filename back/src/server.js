@@ -18,33 +18,33 @@ server.use(morgan('dev'));
 server.use(express.json());
 server.use("/rickandmorty", router);
 
-server.post("/rickandmorty/fav", (req, res) =>{
-    const {detailId, name, species, image, gender} = req.body;
-    if (!detailId || !name ||  !species || !image || !gender) {
-        return res.status(404).send('Faltan datos');
-    }
-    const character = {
-        detailId,
-        name,
-        species,
-        image,
-        gender
-    }
-    favs.push(character);
-    res.status(200).json(character);
-})
+// server.post("/rickandmorty/fav", (req, res) =>{
+//     const {detailId, name, species, image, gender} = req.body;
+//     if (!detailId || !name ||  !species || !image || !gender) {
+//         return res.status(404).send('Faltan datos');
+//     }
+//     const character = {
+//         detailId,
+//         name,
+//         species,
+//         image,
+//         gender
+//     }
+//     favs.push(character);
+//     res.status(200).json(character);
+// })
 
 server.get("/rickandmorty/fav", (req, res) =>{
     res.send(JSON.stringify(favs));
 })
 
-server.delete("/rickandmorty/fav/:id", (req, res) => {
-    const {id}= req.params
-    const newFavs = favs.filter(fav => fav.id !== Number(id) );
-    favs = newFavs;
-    //res.send(JSON.stringify(newFavs))
-    res.status(200).send("Se elimino correctamente");
-})
+// server.delete("/rickandmorty/fav/:id", (req, res) => {
+//     const {id}= req.params
+//     const newFavs = favs.filter(fav => fav.id !== Number(id) );
+//     favs = newFavs;
+//     //res.send(JSON.stringify(newFavs))
+//     res.status(200).send("Se elimino correctamente");
+// })
 
 conn.sync({force:true}).then(()=>{
     server.listen(PORT, () => {
